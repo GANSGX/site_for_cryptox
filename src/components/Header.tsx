@@ -36,13 +36,13 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header-container">
-        <a href="#home" className="logo">
+        <a href="#hero" className="logo">
           {displayText}
           <span className="cursor">|</span>
         </a>
 
         <nav className="nav">
-          <a href="#home" className="nav-link">
+          <a href="#hero" className="nav-link">
             <span className="nav-link-text">Главная</span>
           </a>
           <a href="#about" className="nav-link">
