@@ -6,6 +6,8 @@ const Header: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(450);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const textToType = 'CryptoX';
 
@@ -33,31 +35,61 @@ const Header: React.FC = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, loopNum, typingSpeed]);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+      if (window.innerWidth > 1024) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
-      <div className="header-container">
+      <div className={`header-container ${isMenuOpen ? 'menu-open' : ''}`}>
         <a href="#hero" className="logo">
           {displayText}
           <span className="cursor">|</span>
         </a>
 
-        <nav className="nav">
-          <a href="#hero" className="nav-link">
+        {isMobile && (
+          <button 
+            className={`burger-button ${isMenuOpen ? 'active' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+          </button>
+        )}
+
+        <nav className={`nav ${isMobile && isMenuOpen ? 'nav-mobile-open' : ''} ${isMobile ? 'nav-mobile' : ''}`}>
+          <a href="#hero" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">Главная</span>
           </a>
-          <a href="#about" className="nav-link">
+          <a href="#about" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">О проекте</span>
           </a>
-          <a href="#team" className="nav-link">
+          <a href="#team" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">О команде</span>
           </a>
-          <a href="#docs" className="nav-link">
+          <a href="#docs" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">Документация</span>
           </a>
-          <a href="#web" className="nav-link">
+          <a href="#web" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">Веб версия</span>
           </a>
-          <a href="#install" className="nav-link nav-button">
+          <a href="#install" className="nav-link nav-button" onClick={() => isMobile && setIsMenuOpen(false)}>
             <span className="nav-link-text">Установить</span>
           </a>
         </nav>
