@@ -86,7 +86,7 @@
 }
 
 .burger-button.active .burger-line:nth-child(1) {
-  transform: rotate(45deg) translateY(9px);
+  transform: rotate(45deg) translateY(12px);
 }
 
 .burger-button.active .burger-line:nth-child(2) {
@@ -94,7 +94,7 @@
 }
 
 .burger-button.active .burger-line:nth-child(3) {
-  transform: rotate(-45deg) translateY(-9px);
+  transform: rotate(-45deg) translateY(-13px);
 }
 
 .nav {
@@ -357,11 +357,11 @@
   }
 
   .burger-button.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(7.5px);
+    transform: rotate(45deg) translateY(10px);
   }
 
   .burger-button.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7.5px);
+    transform: rotate(-45deg) translateY(-10px);
   }
 
   .nav {
@@ -400,11 +400,11 @@
   }
 
   .burger-button.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(7.5px);
+    transform: rotate(45deg) translateY(10px);
   }
 
   .burger-button.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7.5px);
+    transform: rotate(-45deg) translateY(-11px);
   }
 
   .nav-link {
@@ -450,11 +450,11 @@
   }
 
   .burger-button.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(6px);
+    transform: rotate(45deg) translateY(8px);
   }
 
   .burger-button.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-6px);
+    transform: rotate(-45deg) translateY(-8.5px);
   }
 
   .nav {
@@ -498,11 +498,11 @@
   }
 
   .burger-button.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(6px);
+    transform: rotate(45deg) translateY(8.5px);
   }
 
   .burger-button.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-6px);
+    transform: rotate(-45deg) translateY(-8px);
   }
 
   .nav-link {
