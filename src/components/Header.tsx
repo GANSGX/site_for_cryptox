@@ -37,8 +37,8 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1024);
-      if (window.innerWidth > 1024) {
+      setIsMobile(window.innerWidth <= 1023);
+      if (window.innerWidth > 1023) {
         setIsMenuOpen(false);
       }
     };
@@ -51,6 +51,12 @@ const Header: React.FC = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClick = () => {
+    if (isMobile) {
+      setIsMenuOpen(false);
+    }
   };
 
   return (
@@ -74,22 +80,22 @@ const Header: React.FC = () => {
         )}
 
         <nav className={`nav ${isMobile && isMenuOpen ? 'nav-mobile-open' : ''} ${isMobile ? 'nav-mobile' : ''}`}>
-          <a href="#hero" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#hero" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">Главная</span>
           </a>
-          <a href="#about" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#features" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">О проекте</span>
           </a>
-          <a href="#team" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#team" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">О команде</span>
           </a>
-          <a href="#docs" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#docs" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">Документация</span>
           </a>
-          <a href="#web" className="nav-link" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#web" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">Веб версия</span>
           </a>
-          <a href="#install" className="nav-link nav-button" onClick={() => isMobile && setIsMenuOpen(false)}>
+          <a href="#install" className="nav-link nav-button" onClick={handleClick}>
             <span className="nav-link-text">Установить</span>
           </a>
         </nav>
