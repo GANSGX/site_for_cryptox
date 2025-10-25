@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/site_for_messanger/', // ← ИМЯ ТВОЕГО РЕПОЗИТОРИЯ
+  base: '/site_for_cryptox/', // ← БЫЛО site_for_messanger
 })
