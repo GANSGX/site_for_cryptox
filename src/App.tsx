@@ -1,17 +1,17 @@
-import React from 'react';
 import Header from './components/Header';
 import Hero from './sections/Hero';
 import Features from './sections/Features';
-import './App.css';
+import Team from './sections/Team';  
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="App">
+    <>
       <Header />
       <Hero />
       <Features />
-    </div>
+      <Team />
+    </>
   );
-};
+}
 
 export default App;
