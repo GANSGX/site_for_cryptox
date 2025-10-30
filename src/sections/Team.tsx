@@ -3,9 +3,6 @@ import { Github, ChevronLeft, ChevronRight, Code2, Terminal, Database, Shield } 
 import './Team.css';
 
 const Team: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const timerRef = useRef<number | null>(null);
-
   const timelineData = [
     {
       period: 'Сентябрь 2025',
@@ -68,6 +65,11 @@ const Team: React.FC = () => {
     }
   ];
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const timerRef = useRef<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   // Запуск таймера
   const startTimer = () => {
     if (timerRef.current) {
@@ -107,6 +109,35 @@ const Team: React.FC = () => {
     resetTimer();
   };
 
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        // Swipe left - next slide
+        nextSlide();
+      } else {
+        // Swipe right - previous slide
+        prevSlide();
+      }
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <section className="team-section" id="team">
       <div className="team-container">
@@ -120,18 +151,23 @@ const Team: React.FC = () => {
 
         {/* Timeline Carousel */}
         <div className="timeline-carousel">
-          <button className="carousel-button prev" onClick={prevSlide} aria-label="Previous">
-            <ChevronLeft size={28} strokeWidth={2.5} />
-          </button>
+          <div
+            className="timeline-track"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <button className="carousel-button prev" onClick={prevSlide} aria-label="Previous">
+              <ChevronLeft size={28} strokeWidth={2.5} />
+            </button>
 
-          <div className="timeline-track">
-            <div 
-              className="timeline-slides"
+            <div
+              className="timeline-slides with-transition"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {timelineData.map((item, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`timeline-slide ${item.status} ${index === currentSlide ? 'active' : ''}`}
                 >
                   <div className="timeline-slide-content">
@@ -161,11 +197,11 @@ const Team: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
 
-          <button className="carousel-button next" onClick={nextSlide} aria-label="Next">
-            <ChevronRight size={28} strokeWidth={2.5} />
-          </button>
+            <button className="carousel-button next" onClick={nextSlide} aria-label="Next">
+              <ChevronRight size={28} strokeWidth={2.5} />
+            </button>
+          </div>
 
           {/* Progress Dots */}
           <div className="carousel-dots">

@@ -87,14 +87,15 @@
 }
 
 .carousel-button.prev {
-  left: 0;
+  left: 20px;
 }
 
 .carousel-button.next {
-  right: 0;
+  right: 20px;
 }
 
 .timeline-track {
+  position: relative;
   overflow: hidden;
   padding: 0 90px;
   mask-image: linear-gradient(
@@ -111,11 +112,22 @@
     black 88%,
     transparent
   );
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .timeline-slides {
   display: flex;
+}
+
+.timeline-slides.with-transition {
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-slides.no-transition {
+  transition: none;
 }
 
 .timeline-slide {
@@ -252,7 +264,7 @@
 
 .timeline-status {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 2rem;
   left: 3rem;
 }
 
@@ -297,7 +309,7 @@
   display: flex;
   justify-content: center;
   gap: 0.8rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .dot {
@@ -659,37 +671,63 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+
+/* Laptop (1024px - 1440px) */
+@media (max-width: 1440px) {
   .team-container {
-    padding: 0 2rem;
+    max-width: 1300px;
+    padding: 0 2.5rem;
   }
 
-  .timeline-track {
-    padding: 0 75px;
+  .team-header {
+    margin-bottom: 4.5rem;
+  }
+
+  .timeline-carousel {
+    margin-bottom: 7rem;
   }
 
   .carousel-button {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
+    left: 15px;
+  }
+
+  .carousel-button.next {
+    right: 15px;
+    left: auto;
+  }
+
+  .timeline-track {
+    padding: 0 85px;
   }
 
   .timeline-slide-content {
-    padding: 2.5rem;
-    min-height: 480px;
+    padding: 2.8rem;
+    min-height: 500px;
+  }
+
+  .carousel-dots {
+    margin-top: 1.8rem;
+  }
+
+  .developer-card {
+    max-width: 950px;
   }
 
   .developer-card-inner {
-    padding: 3rem;
+    padding: 3.2rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
   .team-section {
-    padding: 80px 0;
+    padding: 0px 0 100px 0;
   }
 
   .team-container {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
   }
 
   .team-header {
@@ -700,18 +738,94 @@
     margin-bottom: 6rem;
   }
 
-  .timeline-track {
-    padding: 0 60px;
+  .carousel-button {
+    width: 50px;
+    height: 50px;
+    left: 10px;
   }
 
+  .carousel-button.next {
+    right: 10px;
+    left: auto;
+  }
+
+  .timeline-track {
+    padding: 0 75px;
+  }
+
+  .timeline-slide-content {
+    padding: 2.5rem;
+    min-height: 480px;
+  }
+
+  .carousel-dots {
+    margin-top: 1.6rem;
+  }
+
+  .developer-card {
+    max-width: 900px;
+  }
+
+  .developer-card-inner {
+    padding: 3rem;
+  }
+}
+
+/* Mobile L (425px - 768px) */
+@media (max-width: 768px) {
+  .team-section {
+    padding: 0px 0 80px 0;
+  }
+
+  .team-container {
+    padding: 0 1.5rem;
+  }
+
+  .team-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .team-title {
+    font-size: 2.5rem;
+    letter-spacing: -1.5px;
+  }
+
+  .team-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .timeline-carousel {
+    margin-bottom: 5rem;
+  }
+
+  /* Hide carousel buttons on mobile - swipe only */
   .carousel-button {
-    width: 46px;
-    height: 46px;
+    display: none;
+  }
+
+  .timeline-track {
+    padding: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .timeline-slide {
+    padding: 0;
   }
 
   .timeline-slide-content {
     padding: 2rem;
-    min-height: 440px;
+    min-height: 480px;
+    border-radius: 20px;
+  }
+
+  .timeline-slide-content::before {
+    border-radius: 20px;
+  }
+
+  .timeline-status {
+    bottom: 1.2rem;
+    left: 2rem;
   }
 
   .timeline-icon {
@@ -723,55 +837,199 @@
     font-size: 1.5rem;
   }
 
+  .timeline-period {
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline-title {
+    margin-bottom: 1.2rem;
+  }
+
+  .timeline-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-details {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-details li {
+    padding: 0.45rem 0;
+    padding-left: 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  .carousel-dots {
+    margin-top: 1.5rem;
+    gap: 0.7rem;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+
   .developer-card-inner {
-    padding: 2.5rem;
+    padding: 2rem;
+    border-radius: 24px;
+  }
+
+  .developer-card-inner::before {
+    border-radius: 24px;
   }
 
   .developer-header {
     flex-direction: column;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .developer-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+  }
+
+  .developer-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.8rem;
+  }
+
+  .developer-name {
+    font-size: 1.6rem;
+  }
+
+  .developer-role {
+    font-size: 1rem;
+  }
+
+  .developer-quote {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .developer-quote p {
+    font-size: 1rem;
+  }
+
+  .journey-title,
+  .stack-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .developer-journey {
+    margin-bottom: 2rem;
+  }
+
+  .developer-journey li {
+    font-size: 0.95rem;
+    padding: 0.6rem 0;
+    gap: 0.8rem;
+  }
+
+  .journey-icon {
+    font-size: 1.2rem;
+  }
+
+  .developer-reality {
+    margin-bottom: 2rem;
+  }
+
+  .reality-block {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .developer-tech-stack {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+  }
+
+  .tech-category span {
+    font-size: 0.9rem;
   }
 
   .developer-footer {
     flex-direction: column;
     align-items: stretch;
+    gap: 1.2rem;
+    padding-top: 1.5rem;
   }
 
   .github-link {
     justify-content: center;
+    padding: 0.9rem 1.6rem;
   }
 
   .footer-badges {
     justify-content: center;
   }
+
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
+  }
 }
 
+/* Mobile M (375px - 425px) */
 @media (max-width: 425px) {
   .team-section {
-    padding: 60px 0;
+    padding: 0px 0 60px 0;
   }
 
   .team-container {
     padding: 0 1rem;
   }
 
-  .timeline-track {
-    padding: 0 50px;
+  .team-header {
+    margin-bottom: 3rem;
   }
 
+  .team-title {
+    font-size: 2.2rem;
+  }
+
+  .team-subtitle {
+    font-size: 1rem;
+  }
+
+  .timeline-carousel {
+    margin-bottom: 4rem;
+  }
+
+  /* Hide carousel buttons on mobile - swipe only */
   .carousel-button {
-    width: 42px;
-    height: 42px;
+    display: none;
+  }
+
+  .timeline-track {
+    padding: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   .timeline-slide {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .timeline-slide-content {
     padding: 1.8rem;
-    min-height: 420px;
+    min-height: 460px;
+    border-radius: 18px;
+  }
+
+  .timeline-slide-content::before {
+    border-radius: 18px;
+  }
+
+  .timeline-status {
+    bottom: 1rem;
+    left: 1.8rem;
   }
 
   .timeline-icon {
@@ -779,28 +1037,592 @@
     height: 52px;
   }
 
+  .timeline-period {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+
   .timeline-title {
     font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.3rem;
+  }
+
+  .timeline-details {
+    margin-bottom: 1.8rem;
+  }
+
+  .timeline-details li {
+    font-size: 0.85rem;
+    padding: 0.4rem 0;
+    padding-left: 1.6rem;
+  }
+
+  .status-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .carousel-dots {
+    margin-top: 1.3rem;
+    gap: 0.6rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
   }
 
   .developer-card-inner {
-    padding: 2rem;
+    padding: 1.6rem;
+    border-radius: 20px;
+  }
+
+  .developer-card-inner::before {
+    border-radius: 20px;
+  }
+
+  .developer-header {
+    gap: 1rem;
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.6rem;
   }
 
   .developer-avatar {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+  }
+
+  .developer-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
   }
 
   .developer-name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  .developer-role {
+    font-size: 0.9rem;
+  }
+
+  .developer-quote {
+    padding: 1.3rem;
+    margin-bottom: 1.6rem;
   }
 
   .developer-quote p {
+    font-size: 0.95rem;
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    top: -8px;
+  }
+
+  .journey-title,
+  .stack-title {
     font-size: 1.05rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .developer-journey {
+    margin-bottom: 1.6rem;
+  }
+
+  .developer-journey li {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+
+  .journey-icon {
+    font-size: 1.15rem;
+  }
+
+  .developer-reality {
+    margin-bottom: 1.6rem;
+  }
+
+  .reality-block {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .reality-block strong {
+    font-size: 0.8rem;
+  }
+
+  .developer-tech-stack {
+    margin-bottom: 1.6rem;
+    padding: 1.3rem;
   }
 
   .tech-grid {
-    gap: 1.2rem;
+    gap: 1rem;
+  }
+
+  .category-header {
+    font-size: 0.85rem;
+  }
+
+  .tech-category span {
+    font-size: 0.85rem;
+  }
+
+  .developer-footer {
+    padding-top: 1.3rem;
+    gap: 1rem;
+  }
+
+  .github-link {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.85rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+/* Mobile S (320px - 375px) */
+@media (max-width: 375px) {
+  .team-section {
+    padding: 0px 0 50px 0;
+  }
+
+  .team-container {
+    padding: 0 0.8rem;
+  }
+
+  .team-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .team-title {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .team-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .timeline-carousel {
+    margin-bottom: 3.5rem;
+  }
+
+  /* Hide carousel buttons on mobile - swipe only */
+  .carousel-button {
+    display: none;
+  }
+
+  .timeline-track {
+    padding: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .timeline-slide {
+    padding: 0;
+  }
+
+  .timeline-slide-content {
+    padding: 1.6rem;
+    min-height: 440px;
+    border-radius: 16px;
+  }
+
+  .timeline-slide-content::before {
+    border-radius: 16px;
+  }
+
+  .timeline-status {
+    bottom: 0.9rem;
+    left: 1.6rem;
+  }
+
+  .timeline-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .timeline-period {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .timeline-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .timeline-description {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 1.2rem;
+  }
+
+  .timeline-details {
+    margin-bottom: 1.6rem;
+  }
+
+  .timeline-details li {
+    font-size: 0.8rem;
+    padding: 0.35rem 0;
+    padding-left: 1.6rem;
+  }
+
+  .status-badge {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.75rem;
+  }
+
+  .carousel-dots {
+    margin-top: 1.2rem;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .developer-card-inner {
+    padding: 1.4rem;
+    border-radius: 18px;
+  }
+
+  .developer-card-inner::before {
+    border-radius: 18px;
+  }
+
+  .developer-header {
+    gap: 0.9rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .developer-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  .developer-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .developer-name {
+    font-size: 1.3rem;
+  }
+
+  .developer-role {
+    font-size: 0.85rem;
+  }
+
+  .developer-quote {
+    padding: 1.2rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .developer-quote p {
+    font-size: 0.9rem;
+  }
+
+  .quote-icon {
+    font-size: 2.8rem;
+    top: -7px;
+    left: 1rem;
+  }
+
+  .journey-title,
+  .stack-title {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .developer-journey {
+    margin-bottom: 1.4rem;
+  }
+
+  .developer-journey li {
+    font-size: 0.85rem;
+    padding: 0.45rem 0;
+  }
+
+  .journey-icon {
+    font-size: 1.1rem;
+  }
+
+  .developer-reality {
+    margin-bottom: 1.4rem;
+  }
+
+  .reality-block {
+    padding: 0.85rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .reality-block strong {
+    font-size: 0.75rem;
+  }
+
+  .developer-tech-stack {
+    margin-bottom: 1.4rem;
+    padding: 1.2rem;
+  }
+
+  .tech-grid {
+    gap: 0.9rem;
+  }
+
+  .category-header {
+    font-size: 0.8rem;
+  }
+
+  .tech-category span {
+    font-size: 0.8rem;
+  }
+
+  .developer-footer {
+    padding-top: 1.2rem;
+    gap: 0.9rem;
+  }
+
+  .github-link {
+    padding: 0.75rem 1.3rem;
+    font-size: 0.8rem;
+  }
+
+  .badge {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile XS (до 320px) */
+@media (max-width: 320px) {
+  .team-section {
+    padding: 0px 0 40px 0;
+  }
+
+  .team-container {
+    padding: 0 0.6rem;
+  }
+
+  .team-header {
+    margin-bottom: 2rem;
+  }
+
+  .team-title {
+    font-size: 1.8rem;
+  }
+
+  .team-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timeline-carousel {
+    margin-bottom: 3rem;
+  }
+
+  /* Hide carousel buttons on mobile - swipe only */
+  .carousel-button {
+    display: none;
+  }
+
+  .timeline-track {
+    padding: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .timeline-slide {
+    padding: 0;
+  }
+
+  .timeline-slide-content {
+    padding: 1.4rem;
+    min-height: 420px;
+    border-radius: 14px;
+  }
+
+  .timeline-slide-content::before {
+    border-radius: 14px;
+  }
+
+  .timeline-status {
+    bottom: 0.8rem;
+    left: 1.4rem;
+  }
+
+  .timeline-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .timeline-period {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-details {
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-details li {
+    font-size: 0.75rem;
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .status-badge {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .carousel-dots {
+    margin-top: 1rem;
+    gap: 0.45rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .developer-card-inner {
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+
+  .developer-card-inner::before {
+    border-radius: 16px;
+  }
+
+  .developer-header {
+    gap: 0.8rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .developer-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+  }
+
+  .developer-badge {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .developer-name {
+    font-size: 1.2rem;
+  }
+
+  .developer-role {
+    font-size: 0.8rem;
+  }
+
+  .developer-quote {
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .developer-quote p {
+    font-size: 0.85rem;
+  }
+
+  .quote-icon {
+    font-size: 2.5rem;
+    top: -6px;
+    left: 0.9rem;
+  }
+
+  .journey-title,
+  .stack-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .developer-journey {
+    margin-bottom: 1.2rem;
+  }
+
+  .developer-journey li {
+    font-size: 0.8rem;
+    padding: 0.4rem 0;
+  }
+
+  .journey-icon {
+    font-size: 1rem;
+  }
+
+  .developer-reality {
+    margin-bottom: 1.2rem;
+  }
+
+  .reality-block {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.75rem;
+  }
+
+  .reality-block strong {
+    font-size: 0.7rem;
+  }
+
+  .developer-tech-stack {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+  }
+
+  .tech-grid {
+    gap: 0.8rem;
+  }
+
+  .category-header {
+    font-size: 0.75rem;
+  }
+
+  .tech-category span {
+    font-size: 0.75rem;
+  }
+
+  .developer-footer {
+    padding-top: 1rem;
+    gap: 0.8rem;
+  }
+
+  .github-link {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .badge {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.65rem;
   }
 }
