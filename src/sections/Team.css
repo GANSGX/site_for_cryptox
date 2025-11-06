@@ -861,6 +861,10 @@
     font-size: 0.9rem;
   }
 
+  .timeline-details li::before {
+    font-size: 1.1rem;
+  }
+
   .carousel-dots {
     margin-top: 1.5rem;
     gap: 0.7rem;
@@ -1020,11 +1024,11 @@
   .timeline-slide-content {
     padding: 1.8rem;
     min-height: 460px;
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .timeline-slide-content::before {
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .timeline-status {
@@ -1064,6 +1068,10 @@
     padding-left: 1.6rem;
   }
 
+  .timeline-details li::before {
+    font-size: 1rem;
+  }
+
   .status-badge {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
@@ -1081,11 +1089,11 @@
 
   .developer-card-inner {
     padding: 1.6rem;
-    border-radius: 20px;
+    border-radius: 24px;
   }
 
   .developer-card-inner::before {
-    border-radius: 20px;
+    border-radius: 24px;
   }
 
   .developer-header {
@@ -1237,11 +1245,11 @@
   .timeline-slide-content {
     padding: 1.6rem;
     min-height: 440px;
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .timeline-slide-content::before {
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .timeline-status {
@@ -1281,6 +1289,10 @@
     padding-left: 1.6rem;
   }
 
+  .timeline-details li::before {
+    font-size: 0.9rem;
+  }
+
   .status-badge {
     padding: 0.45rem 0.95rem;
     font-size: 0.75rem;
@@ -1298,11 +1310,11 @@
 
   .developer-card-inner {
     padding: 1.4rem;
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .developer-card-inner::before {
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
   .developer-header {
@@ -1454,11 +1466,11 @@
   .timeline-slide-content {
     padding: 1.4rem;
     min-height: 420px;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .timeline-slide-content::before {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .timeline-status {
@@ -1498,6 +1510,10 @@
     padding-left: 1.5rem;
   }
 
+  .timeline-details li::before {
+    font-size: 0.85rem;
+  }
+
   .status-badge {
     padding: 0.4rem 0.85rem;
     font-size: 0.7rem;
@@ -1515,11 +1531,11 @@
 
   .developer-card-inner {
     padding: 1.2rem;
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .developer-card-inner::before {
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .developer-header {

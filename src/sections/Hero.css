@@ -388,7 +388,11 @@
     min-width: 95%;
     padding: 1.6rem 1.5rem;
     margin-bottom: 2rem;
-    border-radius: 18px;
+    border-radius: 20px;
+  }
+
+  .hero-description-badge::before {
+    border-radius: 20px;
   }
 
   .hero-description {
@@ -458,7 +462,11 @@
     min-width: 100%;
     padding: 1.4rem 1.2rem;
     margin-bottom: 1.8rem;
-    border-radius: 16px;
+    border-radius: 18px;
+  }
+
+  .hero-description-badge::before {
+    border-radius: 18px;
   }
 
   .hero-description {
@@ -521,7 +529,11 @@
     min-width: 100%;
     padding: 1.2rem 1rem;
     margin-bottom: 1.5rem;
-    border-radius: 14px;
+    border-radius: 16px;
+  }
+
+  .hero-description-badge::before {
+    border-radius: 16px;
   }
 
   .hero-description {
