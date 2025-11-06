@@ -89,7 +89,7 @@ const Header: React.FC = () => {
           <a href="#team" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">О команде</span>
           </a>
-          <a href="#docs" className="nav-link" onClick={handleClick}>
+          <a href="#documentation" className="nav-link" onClick={handleClick}>
             <span className="nav-link-text">Документация</span>
           </a>
           <a href="#web" className="nav-link" onClick={handleClick}>
