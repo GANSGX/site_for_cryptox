@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronRight, ChevronDown, FileText, Folder, FolderOpen, Shield, Users, MessageSquare, Phone, Image, Lock, Server, Zap, Key, Database, Code, Terminal, Network, BookOpen, Cpu, GitBranch, CheckCircle2, Clock, Activity, TrendingUp, AlertTriangle, Info } from 'lucide-react';
+import { ChevronRight, ChevronDown, FileText, Folder, FolderOpen, Shield, Users, MessageSquare, Image, Lock, Server, Zap, Key, Database, Terminal, Network, BookOpen, Cpu, GitBranch, CheckCircle2, Clock, Activity, TrendingUp, AlertTriangle, Info } from 'lucide-react';
 import './Documentation.css';
 
 interface MenuItem {
